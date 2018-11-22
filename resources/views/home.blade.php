@@ -30,7 +30,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="2">No entries found.</td>
+                                    <td colspan="2">No entries found1.</td>
                                 </tr>
                             @endforelse
                             </tbody>
