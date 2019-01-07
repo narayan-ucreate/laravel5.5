@@ -1,5 +1,9 @@
 pipeline {
-    agent { docker 'php' }
+    agent { docker {
+                       image 'php'
+                       args '-u root:root'
+                   }
+           }
     stages {
         stage('build') {
             steps {
