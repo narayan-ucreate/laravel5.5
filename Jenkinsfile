@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Composer Install') {
             steps {
-             sh 'sudo apt-get install curl php-cli php-mbstring git unzip'
+             sh 'curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer'
             }
         }
     }
