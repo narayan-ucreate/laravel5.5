@@ -1,7 +1,7 @@
 pipeline {
     agent { docker {
                        image 'php'
-                       args '-u root:root'
+                       args 'sudo '
                    }
            }
     stages {
