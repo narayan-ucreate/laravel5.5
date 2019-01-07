@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Composer Install') {
             steps {
-             sh 'apt install curl php-cli php-mbstring git unzip'
+             sh 'sudo apt-get install curl php-cli php-mbstring git unzip'
             }
         }
     }
