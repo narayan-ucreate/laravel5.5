@@ -2,8 +2,11 @@ pipeline {
     agent any
     stages {
         stage('Composer Install') {
+           agent {
+                        docker { image 'hitalos/laravel:latest' }
+            },
             steps {
-             sh 'curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer'
+             echo 'h';
             }
         }
     }
