@@ -1,12 +1,9 @@
 pipeline {
-    agent any
+    agent { docker 'php' }
     stages {
-        stage('Composer Install') {
-           agent {
-                        docker { image 'hitalos/laravel:latest' }
-            },
+        stage('build') {
             steps {
-             echo 'h';
+                sh 'php --version'
             }
         }
     }
