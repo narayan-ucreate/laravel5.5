@@ -31,13 +31,13 @@ pipeline {
                 docker { image 'composer' }
             }
             steps {
+             sh 'php --version'
                 sh 'composer --version'
                 sh 'composer install'
             }
         }
         stage('install postgress') {
             steps {
-                sh 'docker pull postgres'
                 sh 'php artisan migrate'
             }
         }
