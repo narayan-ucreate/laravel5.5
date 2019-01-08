@@ -7,7 +7,7 @@ pipeline {
             }
             steps {
                 sh 'php --version'
-                sh 'composer install'
+                sh 'composer --version'
             }
         }
     }
