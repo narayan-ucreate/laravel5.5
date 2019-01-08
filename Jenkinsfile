@@ -15,10 +15,6 @@ pipeline {
             }
             steps {
                 sh 'composer --version'
-            }
-        }
-        stage('update composer') {
-            steps {
                 sh 'composer install'
             }
         }
