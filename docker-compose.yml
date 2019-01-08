@@ -2,12 +2,3 @@ version: "3"
 services:
   install-php:
       image: php
-  install-composer:
-      image: composer
-  postgres-test:
-    image: postgres:10.3-alpine
-    environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: test
-    ports:
-      - "5433:5432"
