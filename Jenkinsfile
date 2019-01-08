@@ -4,6 +4,7 @@ pipeline {
 
    environment {
        APP_VERSION = '1'
+       REDIS_HOST='redis'
    }
    stages {
        stage('Build') {
