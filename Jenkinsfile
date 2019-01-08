@@ -2,6 +2,7 @@ pipeline {
     agent none
     environment {
         REDIS_HOST='redis'
+        REDIS_PORT='6379'
     }
     stages {
         stage('install php') {
