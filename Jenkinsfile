@@ -16,5 +16,10 @@ pipeline {
                 sh 'docker-compose -f docker-compose.yml up install-php'
             }
         }
+        stage('install-composer') {
+            steps {
+                sh 'docker-compose -f docker-compose.yml up install-composer'
+            }
+        }
     }
 }

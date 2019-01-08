@@ -2,3 +2,5 @@ version: "3"
 services:
   install-php:
       image: php
+  install-composer:
+      image: composer
