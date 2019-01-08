@@ -36,5 +36,10 @@ pipeline {
              sh 'composer install'
             }
         }
+        stage('install database') {
+            steps {
+             sh 'docker-compose start postgres-test'
+            }
+        }
     }
 }
