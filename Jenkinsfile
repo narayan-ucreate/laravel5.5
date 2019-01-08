@@ -1,24 +1,50 @@
 pipeline {
-    agent any
+     agent { dockerfile true }
     environment {
         REDIS_HOST='localhost'
         DB_CONNECTION='pgsql'
         DB_HOST='localhost'
-        DB_PORT='5433'
-        DB_DATABASE='test'
+        DB_PORT='5432'
+        DB_DATABASE='postgres'
         DB_USERNAME='postgres'
-        DB_PASSWORD='postgres'
-
+        DB_PASSWORD='secret'
     }
     stages {
-        stage('install-php') {
+        stage('install php') {
+            agent {
+                docker { image 'php' }
+            }
             steps {
-                sh 'docker-compose -f docker-compose.yml up install-php'
+                sh "docker-composer build"
             }
         }
-        stage('install-composer') {
+        stage('install redis') {
+            agent {
+                docker { image 'redis:latest' }
+            }
             steps {
-                sh 'docker-compose -f docker-compose.yml up install-composer'
+                echo 'success'
+            }
+        }
+        stage('install composer') {
+            agent {
+                docker { image 'composer' }
+            }
+            steps {
+             sh 'php --version'
+                sh 'composer --version'
+                sh 'composer install'
+            }
+        }
+        stage('install postgress') {
+            agent {
+                docker {
+                    image 'postgres:10.3-alpine'
+                    args '-v $HOME/.m2:/root/.m2'
+                 }
+            }
+            steps {
+                echo 'success';
             }
         }
     }
