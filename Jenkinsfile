@@ -17,7 +17,7 @@ pipeline {
                 docker { image 'redis:latest' }
             }
             steps {
-                echo 'hi'
+                sh 'redis-cli ping'
             }
         }
         stage('install composer') {
