@@ -1,7 +1,10 @@
 pipeline {
-    agent { docker 'circleci/php:7.2.2' }
+    agent { docker 'php' }
     stages {
         stage('build') {
+            agent {
+                docker { image 'composer' }
+            }
             steps {
                 sh 'php --version'
                 sh 'composer install'
