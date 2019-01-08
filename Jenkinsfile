@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+     agent { dockerfile true }
     environment {
         REDIS_HOST='localhost'
         DB_CONNECTION='pgsql'
@@ -37,6 +37,12 @@ pipeline {
             }
         }
         stage('install postgress') {
+            agent {
+                docker {
+                    image 'postgres:10.3-alpine'
+                    args '-v $HOME/.m2:/root/.m2'
+                 }
+            }
             steps {
                 sh 'php artisan migrate'
             }
