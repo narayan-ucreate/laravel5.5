@@ -38,7 +38,6 @@ pipeline {
         stage('install postgress') {
             steps {
                 sh 'docker pull postgres'
-                sh 'docker run -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=postgres -p 5432:5432 -d postgres'
                 sh 'php artisan migrate'
             }
         }
