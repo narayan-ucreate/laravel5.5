@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('install php') {
             steps {
-                sh 'docker-compose up'
+                sh 'docker-compose start postgres-test'
             }
         }
     }
