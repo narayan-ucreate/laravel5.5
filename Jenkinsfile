@@ -9,6 +9,14 @@ pipeline {
                 sh 'php --version'
             }
         }
+        stage('install redis') {
+            agent {
+                docker { image 'redis:latest' }
+            }
+            steps {
+                echo 'hi'
+            }
+        }
         stage('install composer') {
             agent {
                 docker { image 'composer' }
