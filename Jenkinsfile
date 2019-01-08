@@ -41,5 +41,10 @@ pipeline {
              sh 'docker-compose start postgres-test'
             }
         }
+        stage('install database') {
+            steps {
+             sh './vendor/phpunit/phpunit/phpunit'
+            }
+        }
     }
 }
