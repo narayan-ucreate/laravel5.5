@@ -2,6 +2,12 @@ pipeline {
     agent any
     environment {
         REDIS_HOST='localhost'
+        DB_CONNECTION='pgsql'
+        DB_HOST='localhost'
+        DB_PORT='5432'
+        DB_DATABASE='postgres'
+        DB_USERNAME='postgres'
+        DB_PASSWORD='secret'
     }
     stages {
         stage('install php') {
@@ -33,6 +39,7 @@ pipeline {
             steps {
                 sh 'docker pull postgres'
                 sh 'docker run --name project_postgres -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=postgres -p 5432:5432 -d postgres'
+                sh 'php artisan migrate'
             }
         }
     }
