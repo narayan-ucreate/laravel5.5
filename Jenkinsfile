@@ -1,5 +1,5 @@
 pipeline {
-     agent any
+    agent any
     environment {
         REDIS_HOST='localhost'
         DB_CONNECTION='pgsql'
@@ -15,7 +15,7 @@ pipeline {
                 docker { image 'php' }
             }
             steps {
-                sh "docker-composer build"
+                sh 'php --version'
             }
         }
         stage('install redis') {
@@ -32,19 +32,8 @@ pipeline {
             }
             steps {
              sh 'php --version'
-                sh 'composer --version'
-                sh 'composer install'
-            }
-        }
-        stage('install postgress') {
-            agent {
-                docker {
-                    image 'postgres:10.3-alpine'
-                    args '-v $HOME/.m2:/root/.m2'
-                 }
-            }
-            steps {
-                echo 'success';
+             sh 'composer --version'
+             sh 'composer install'
             }
         }
     }
