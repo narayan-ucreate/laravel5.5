@@ -4,3 +4,4 @@ services:
       image: php
   install-composer:
       image: composer
+      command: bash -c "composer install"
