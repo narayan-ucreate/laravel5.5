@@ -1,5 +1,9 @@
 version: "3"
 services:
+  install-php:
+      image: php
+  install-composer:
+      image: composer
   postgres-test:
     image: postgres:10.3-alpine
     environment:
@@ -7,21 +11,3 @@ services:
       POSTGRES_DB: test
     ports:
       - "5433:5432"
-  postgres-dev:
-    image: postgres:10.3-alpine
-    environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: dev
-    ports:
-      - "5434:5432"
-    volumes:
-      - ./postgres:/var/lib/postgresql/data
-  pgadmin:
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@pgadmin.com
-      PGADMIN_DEFAULT_PASSWORD: admin@pgadmin.com
-    ports:
-      - "5000:80"
-    volumes:
-      - ./pgadmin:/var/lib/pgadmin

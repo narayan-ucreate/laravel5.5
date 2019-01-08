@@ -4,15 +4,16 @@ pipeline {
         REDIS_HOST='localhost'
         DB_CONNECTION='pgsql'
         DB_HOST='localhost'
-        DB_PORT='5432'
-        DB_DATABASE='postgres'
+        DB_PORT='5433'
+        DB_DATABASE='test'
         DB_USERNAME='postgres'
-        DB_PASSWORD='secret'
+        DB_PASSWORD='postgres'
+
     }
     stages {
-        stage('install php') {
+        stage('install-php') {
             steps {
-                sh 'docker-compose start postgres-test'
+                sh 'docker-compose start install-php'
             }
         }
     }
