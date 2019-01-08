@@ -26,6 +26,11 @@ pipeline {
                 echo 'success'
             }
         }
+        stage('install database') {
+            steps {
+             sh 'docker-compose start postgres-test'
+            }
+        }
         stage('install composer') {
             agent {
                 docker { image 'composer' }
@@ -34,17 +39,9 @@ pipeline {
              sh 'php --version'
              sh 'composer --version'
              sh 'composer install'
-            }
-        }
-        stage('install database') {
-            steps {
-             sh 'docker-compose start postgres-test'
-            }
-        }
-        stage('testing test cases') {
-            steps {
              sh './vendor/phpunit/phpunit/phpunit'
             }
         }
+
     }
 }
