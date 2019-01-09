@@ -14,7 +14,7 @@ pipeline {
        }
        stage('Test') {
            steps {
-               echo 'test Done....'
+               sh 'docker-compose -f docker-compose.yml up postgres-test'
            }
        }
        stage('Deploy') {
